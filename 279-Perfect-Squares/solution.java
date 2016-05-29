@@ -24,6 +24,8 @@ public class Solution {
         // }
         
         // return dp[n];
+        
+        //the same as coin change #322
         int[] memo = new int[n + 1];
         Arrays.fill(memo, Integer.MAX_VALUE);
         memo[0] = 0;
