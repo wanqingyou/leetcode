@@ -65,7 +65,6 @@ public class Solution {
     public int lengthOfLIS(int[] nums) {
         if(nums==null||nums.length==0) return 0;
         if(nums.length==1) return 1;
-        // if(nums.length<2) return 2;
         int []len=new int[nums.length];
         len[0]=1;
         int max=1;
