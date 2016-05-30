@@ -72,7 +72,7 @@ public class WordDictionary {
         return trieRoot.search(word);
     }
 }
-
+//http://www.programcreek.com/2014/05/leetcode-implement-trie-prefix-tree-java/
 // Your WordDictionary object will be instantiated and called as such:
 // WordDictionary wordDictionary = new WordDictionary();
 // wordDictionary.addWord("word");
