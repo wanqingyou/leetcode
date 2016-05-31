@@ -4,14 +4,13 @@ public class Solution {
         if (length < 2) {
             return 0;
         }
-        int profit = 0;
-        int lastBuy = prices[0];
-        for (int i = 1; i < length; i++) {
-            if (prices[i]>lastBuy) {
-                profit = prices[i] - lastBuy + profit;
+        int p = 0;
+        for(int i = 1; i < prices.length ; ++i) {
+            int delta = prices[i] - prices[i-1];
+            if(delta > 0 ) {
+                p += delta;
             }
-            lastBuy = prices[i];
         }
-        return profit;
+        return p;
     }
 }
