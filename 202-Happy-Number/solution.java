@@ -1,14 +1,22 @@
 public class Solution {
-    public boolean isHappy(int n) {
-        int result =0;
-        while(result!=1){
-            while(n>0){
-                int a =n%10;
-                result+=a*a;
-                n=n/10;
-            }
+    private int getNextHappy(int n) {
+        int sum = 0;
+        while (n != 0) {
+            sum += (n % 10) * (n % 10);
+            n /= 10;
         }
-        if(result==1)return true;
-        return false;
+        return sum;
+    }
+    
+    public boolean isHappy(int n) {
+        HashSet<Integer> hash = new HashSet<Integer>();
+        while (n != 1) {
+            if (hash.contains(n)) {
+                return false;
+            }
+            hash.add(n);
+            n = getNextHappy(n);
+        }
+        return true;
     }
 }
