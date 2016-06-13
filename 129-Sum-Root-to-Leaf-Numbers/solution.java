@@ -9,37 +9,48 @@
  */
 public class Solution {
     public int sumNumbers(TreeNode root) {
-        if(root==null) return 0;
-        TreeNode dummy=new TreeNode(-1);
-        Stack<TreeNode> stack=new Stack<TreeNode>();
-        List<String> paths=new ArrayList<String>();
-        stack.push(dummy);
-        stack.push(root);
-        TreeNode p;
-        String str="";
-        while(!stack.isEmpty()&&stack.peek().val!=-1){
-            p=stack.pop();
-            while(p!=null){
-                stack.push(p);
-                str+=p.val;
-                p=p.left;
-            }
-            p=stack.pop();
-            if(p.right==null){
-                paths.add(str);
-                str=str.substring(0,str.length()-1);
-                p=stack.pop();
-            }else{
-                p=p.right;
-                stack.push(p);
-                str+=p.val;
-            }
-        }
-        int sum=0;
+        // if(root==null) return 0;
+        // TreeNode dummy=new TreeNode(-1);
+        // Stack<TreeNode> stack=new Stack<TreeNode>();
+        // List<String> paths=new ArrayList<String>();
+        // stack.push(dummy);
+        // stack.push(root);
+        // TreeNode p;
+        // String str="";
+        // while(!stack.isEmpty()&&stack.peek().val!=-1){
+        //     p=stack.pop();
+        //     while(p!=null){
+        //         stack.push(p);
+        //         str+=p.val;
+        //         p=p.left;
+        //     }
+        //     p=stack.pop();
+        //     if(p.right==null){
+        //         paths.add(str);
+        //         str=str.substring(0,str.length()-1);
+        //         p=stack.pop();
+        //     }else{
+        //         p=p.right;
+        //         stack.push(p);
+        //         str+=p.val;
+        //     }
+        // }
+        // int sum=0;
         
-        for(String s:paths){
-            sum+=Integer.parseInt(s);
+        // for(String s:paths){
+        //     sum+=Integer.parseInt(s);
+        // }
+        // return sum;
+        
+        return sumAll(root,0);
+    }
+    
+    private int sumAll(TreeNode root, int sum){
+        if(root==null) return 0;
+        else if(root.left==null&&root.right==null){
+            return sum*10+root.val;
+        }else{
+            return sumAll(root.left, sum*10+root.val)+sumAll(root.right, sum*10+root.val);
         }
-        return sum;
     }
 }
