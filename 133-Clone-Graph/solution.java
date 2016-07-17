@@ -18,12 +18,13 @@ public class Solution {
         
         while(!queue.isEmpty()){
             UndirectedGraphNode curNode=queue.pollFirst();
+            UndirectedGraphNode curClone=map.get(curNode);
             for(UndirectedGraphNode neighbor:curNode.neighbors){
                 if(map.containsKey(neighbor)){
-                    map.get(curNode).neighbors.add(map.get(neighbor));//add to the existing list
+                    curClone.neighbors.add(map.get(neighbor));//add to the existing list
                 }else{
                     UndirectedGraphNode nei=new UndirectedGraphNode(neighbor.label);//create new node
-                    map.get(curNode).neighbors.add(nei);
+                    curClone.neighbors.add(nei);
                     map.put(neighbor, nei);
                     queue.add(neighbor);
                 }
