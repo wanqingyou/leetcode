@@ -3,13 +3,13 @@ public class Solution {
         if(tokens==null||tokens.length==2) return 0;
         if(tokens.length==1) return Integer.parseInt(tokens[0]);
         Stack<String> stack=new Stack<String>();
-        stack.push(tokens[0]);
-        stack.push(tokens[1]);
-        int index=2;
+        //stack.push(tokens[0]);
+        //stack.push(tokens[1]);
+        int index=0;
         int result=0;
-         String strs[] = new String[]{"+", "-", "*", "/"};
+        String strs[] = new String[]{"+", "-", "*", "/"};
         List<String> operators=Arrays.asList(strs);
-        while(!stack.isEmpty()&&index<tokens.length){
+        while(index<tokens.length){
             if(operators.contains(tokens[index])){
                 int a =Integer.parseInt(stack.pop());
                 int b =Integer.parseInt(stack.pop());
