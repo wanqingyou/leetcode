@@ -38,8 +38,13 @@ public class Solution {
         }
         
         public void move(int newElement){
-            list.poll();
+            int first=list.poll();
             list.add(newElement);
+            if(first<maxInWin&&newElement<maxInWin) return;
+            if(newElement>maxInWin){
+                maxInWin=newElement;
+                return;
+            }
             int max=list.get(0);
             for(int i=1;i<winSize;i++){
                 if(max<list.get(i)) max=list.get(i);
